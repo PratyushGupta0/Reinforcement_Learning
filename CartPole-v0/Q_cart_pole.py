@@ -23,34 +23,6 @@ class Q_cart_pole:
         ])
         self.model.compile(optimizer=tf.keras.optimizers.Adam(
             learning_rate=self.lr), loss='mse')
-        # self.model_zero = tf.keras.Sequential([
-        #     tf.keras.layers.Input(shape=(4,)),
-        #     tf.keras.layers.Dense(
-        #         units=256, activation='relu'),
-        #     tf.keras.layers.Dense(units=128, activation='relu'),
-        #     tf.keras.layers.Dense(units=64, activation='relu'),
-        #     tf.keras.layers.Dense(units=32, activation='relu'),
-        #     tf.keras.layers.Dense(units=16, activation='relu'),
-        #     tf.keras.layers.Dense(units=4, activation='relu'),
-        #     tf.keras.layers.Dense(units=1, activation='relu'),
-
-        # ])
-        # self.model_zero.compile(optimizer=tf.keras.optimizers.Adam(
-        #     learning_rate=0.2), loss='mse')
-        # self.model_one = tf.keras.Sequential([
-        #     tf.keras.layers.Input(shape=(4,)),
-        #     tf.keras.layers.Dense(
-        #         units=256, activation='relu'),
-        #     tf.keras.layers.Dense(units=128, activation='relu'),
-        #     tf.keras.layers.Dense(units=64, activation='relu'),
-        #     tf.keras.layers.Dense(units=32, activation='relu'),
-        #     tf.keras.layers.Dense(units=16, activation='relu'),
-        #     tf.keras.layers.Dense(units=4, activation='relu'),
-        #     tf.keras.layers.Dense(units=1, activation='relu'),
-
-        # ])
-        # self.model_one.compile(optimizer=tf.keras.optimizers.Adam(
-        #     learning_rate=0.001), loss='mse')
 
     def preprocess(self, observation, action):
         return np.append(np.reshape(observation, (1, observation.shape[0])), np.reshape(action, (1, 1)), axis=1)
@@ -58,7 +30,6 @@ class Q_cart_pole:
     def choose_action(self, observation):
         curr_state = observation
         sample = np.random.choice([0, 1], p=[self.epsilon, 1-self.epsilon])
-        # print(sample)
         if(sample == 0):
             action = np.random.randint(0, self.n_actions)
         else:

@@ -22,9 +22,7 @@ for i_episode in range(11000):
     curr_target = 0
     for t in range(100):
         env.render()
-        # print(observation.shape)
         action = agent.choose_action(curr_state)
-       # print(action)
         observation, reward, done, info = env.step(action)
         observation = np.reshape(observation, (4, 1))
         if t == 0:
