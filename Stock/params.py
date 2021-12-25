@@ -1,0 +1,11 @@
+epoch_num = 50
+memory_size = 200
+batch_size = 50
+epsilon = 1.0
+epsilon_decrease = 1e-3
+epsilon_min = 0.1
+start_reduce_epsilon = 200
+train_freq = 10
+update_q_freq = 20
+gamma = 0.97
+show_log_freq = 5
